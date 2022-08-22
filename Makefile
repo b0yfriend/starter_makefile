@@ -8,12 +8,15 @@ CFLAGS += -Wpointer-arith -Wwrite-strings -Wfloat-equal -Wcast-align
 CFLAGS += -Wcast-qual -Wbad-function-cast -Wstrict-overflow=4
 CFLAGS += -Wunreachable-code -Wformat=2 -Wundef -Wstrict-prototypes
 CFLAGS += -Wmissing-declarations -Wmissing-prototypes -Wold-style-definition
+# GCC specific flags start from here:
+CFLAGS += -Wlogical-op -Wcast-align=strict -fanalyzer
+CFLAGS += -fsanitize=address,leak,undefined -fsanitize-undefined-trap-on-error
 
 foo: foo.o
 	${CC} foo.o ${CFLAGS} -o foo
 
 foo.o: foo.c
-	${CC} foo.c -c -o foo.o
+	${CC} foo.c ${CFLAGS} -c -o foo.o
 
 foo.c:
 	@echo "#include <stdio.h>" >foo.c
