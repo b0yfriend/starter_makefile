@@ -1,5 +1,8 @@
 CC := gcc
 STD := c99
+
+# These flags were suggested in this reddit thread:
+# https://www.reddit.com/r/C_Programming/comments/w5jb8l/what_gcc_warning_flags_do_you_usually_set/
 CFLAGS := -std=${STD} -Wall -Wextra -Werror -Wpedantic -Wshadow -Wvla
 CFLAGS += -Wpointer-arith -Wwrite-strings -Wfloat-equal -Wcast-align
 CFLAGS += -Wcast-qual -Wbad-function-cast -Wstrict-overflow=4
